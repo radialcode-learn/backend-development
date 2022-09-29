@@ -5,7 +5,6 @@ module.exports = async (req, res) => {
     email: req.body.email,
     userId: req.body.userId,
   });
-  console.log("checkUserValidation", checkUserValidation);
   if (checkUserValidation.length === 0) {
     const userDetailsSaveData = new userDetailsForm({
       firstName: req.body.firstName,

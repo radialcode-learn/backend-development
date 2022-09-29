@@ -1,4 +1,5 @@
 module.exports = {
-  db_host: "mongodb://localhost:27017/learnbackend",
+  db_host:
+    "mongodb+srv://palvi:Palvi@cluster0.xsrrya0.mongodb.net/learn_backend",
   host: "http://localhost:4000",
 };

@@ -2,6 +2,7 @@ const signUp = require("../schema/signUp");
 const jwt = require("jsonwebtoken");
 
 module.exports = async (req, res) => {
+  console.log(req.body, "==============================");
   const singnUpValidation = await signUp.find({ email: req.body.email });
   if (singnUpValidation.length === 0) {
     const signUpDetails = new signUp({

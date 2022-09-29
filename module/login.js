@@ -2,7 +2,6 @@ const signUp = require("../schema/signUp");
 const jwt = require("jsonwebtoken");
 
 module.exports = async (req, res) => {
-  console.log("hhhhhhhhhh", req.body);
   await signUp
     .find({ email: req.body.email })
     .exec()

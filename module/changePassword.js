@@ -1,7 +1,6 @@
 const signUp = require("../schema/signUp");
 
 module.exports = async (req, res) => {
-  console.log(req.body);
   const checkUser = await signUp.find({ email: req.payload.email });
   if (!!checkUser) {
     if (checkUser[0].password === req.body.password) {
@@ -27,5 +26,4 @@ module.exports = async (req, res) => {
       });
     }
   }
-  console.log("checkUser", checkUser);
 };
