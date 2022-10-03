@@ -11,9 +11,11 @@ const VerifyToken = require("./VerifyToken");
 Router.post("/signup", auth);
 Router.post("/login", login);
 Router.get("/all-user", VerifyToken, allUser);
+Router.get("/all-user", VerifyToken, allUser);
 Router.get("/me", VerifyToken, userDetails);
 Router.post("/update/me", VerifyToken, updateMe);
 Router.post("/add/user-details", VerifyToken, userDetailsForm);
+Router.post("/create/post", VerifyToken, userDetailsForm);
 Router.post("/change-password", VerifyToken, changePassword);
 
 Router.get("/", (req, res) => {
