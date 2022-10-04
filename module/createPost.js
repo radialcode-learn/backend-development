@@ -1,32 +1,27 @@
-const userDetailsForm = require("../schema/userDetailsForm");
+const { ImageUrl } = require("../comman/UploadImageUrl");
+const simplePost = require("../schema/simplePost");
+const signUp = require("../schema/signUp");
 
 module.exports = async (req, res) => {
-  const checkUserValidation = await userDetailsForm.find({
-    email: req.body.email,
-    userId: req.body.userId,
+  const image_url = ImageUrl(req.body.filePath);
+  const userDetails = await signUp.find({ _id: req.payload._id });
+  console.log(userDetails, "userDetails");
+  const createPostDeatils = new simplePost({
+    description: req.body.description,
+    title: req.body.title,
+    filePath: req.body.filePath,
+    file: image_url.file_path,
+    like: 0,
+    dislike: 0,
+    total_comment: 0,
+    user: userDetails[0],
+    userId: req.payload._id,
   });
-  if (checkUserValidation.length === 0) {
-    const userDetailsSaveData = new userDetailsForm({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      phone: req.body.phone,
-      address: req.body.address,
-      city: req.body.city,
-      country: req.body.country,
-      zipCode: req.body.zipCode,
-      userId: req.body.userId,
-    });
-    const userDetailsSave = await userDetailsSaveData.save();
-    return res.status(200).json({
-      success: true,
-      message: "data submit successfully",
-      userDetails: userDetailsSave,
-    });
-  } else {
-    return res.status(400).json({
-      success: true,
-      message: "user already exist",
-    });
-  }
+
+  const createPostDeatilsSave = await createPostDeatils.save();
+  return res.status(200).json({
+    success: true,
+    message: "Post Created successfully",
+    createPost: createPostDeatilsSave,
+  });
 };

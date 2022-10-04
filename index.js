@@ -1,29 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 require("./database/dbConnection");
 // const xhr = new XMLHttpRequest();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
 const routes = require("./router/routes");
-// const corsOptions = {
-//   credentials: true,
-//   allowedHeaders: [
-//     "*",
-//     "Content-Type",
-//     "X-Requested-With",
-//     "Accept",
-//     "Authorization",
-//     "x-api-key",
-//     "Access-Control-Allow-Origin",
-//     "Access-Control-Allow-Headers",
-//   ],
-//   exposedHeaders: ["sessionId"],
-//   origin: "*",
-//   hosts: "*",
-//   methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-//   preflightContinue: false,
-// };
 app.use(cors());
 //Routes
 app.use("/api/v1", routes);
