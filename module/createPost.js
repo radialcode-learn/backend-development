@@ -5,7 +5,6 @@ const signUp = require("../schema/signUp");
 module.exports = async (req, res) => {
   const image_url = ImageUrl(req.body.filePath);
   const userDetails = await signUp.find({ _id: req.payload._id });
-  console.log(userDetails, "userDetails");
   const createPostDeatils = new simplePost({
     description: req.body.description,
     title: req.body.title,

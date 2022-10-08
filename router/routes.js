@@ -8,10 +8,12 @@ const updateMe = require("../module/updateMe");
 const userDetails = require("../module/userDetails");
 const userDetailsForm = require("../module/userDetailsForm");
 const VerifyToken = require("./VerifyToken");
-const multer = require("multer");
-
-const path = require("path");
 const UploadImage = require("../module/UploadImage");
+const myPost = require("../module/myPost");
+const globalPost = require("../module/globalPost");
+const multer = require("multer");
+const path = require("path");
+
 const upload_folder = path.join(__dirname, "../uploads");
 
 const storage = multer.diskStorage({
@@ -35,6 +37,8 @@ Router.get("/me", VerifyToken, userDetails);
 Router.post("/update/me", VerifyToken, updateMe);
 Router.post("/add/user-details", VerifyToken, userDetailsForm);
 Router.post("/create/post", VerifyToken, createPost);
+Router.get("/my-post", VerifyToken, myPost);
+Router.get("/global-post", VerifyToken, globalPost);
 Router.post("/change-password", VerifyToken, changePassword);
 Router.post("/check-image", UploadImage);
 Router.post("/upload", upload.single("file"), (req, res, next) => {

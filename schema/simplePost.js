@@ -12,4 +12,3 @@ const simplePost = mongoose.Schema({
   total_comment: { type: Number },
 });
 module.exports = mongoose.model("simplePost", simplePost);
-// mongodb+srv://palvi:<password>@cluster0.xsrrya0.mongodb.net/test

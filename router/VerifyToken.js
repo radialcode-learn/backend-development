@@ -15,7 +15,6 @@ module.exports = async (req, res, next) => {
           message: "token not found",
         });
       }
-      console.log(payload, "GGGGGGGGGGGGGGGGGX");
       req.payload = payload;
       next();
     }

@@ -16,7 +16,6 @@ module.exports = async (req, res) => {
           user[0].email === req.body.email &&
           user[0].password === req.body.password
         ) {
-          console.log(user, "category");
           const token = jwt.sign(
             {
               _id: user[0]._id,
