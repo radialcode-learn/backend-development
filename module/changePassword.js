@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
     } else {
       return res.status(400).json({
         success: false,
-        message: "old password is wrong",
+        message: "Old password is wrong",
       });
     }
   }

@@ -12,6 +12,7 @@ module.exports = async (req, res) => {
     file: image_url.file_path,
     like: 0,
     dislike: 0,
+    isLike: false,
     total_comment: 0,
     user: userDetails[0],
     userId: req.payload._id,

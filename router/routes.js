@@ -11,8 +11,10 @@ const VerifyToken = require("./VerifyToken");
 const UploadImage = require("../module/UploadImage");
 const myPost = require("../module/myPost");
 const globalPost = require("../module/globalPost");
+const disLike = require("../module/dislike");
 const multer = require("multer");
 const path = require("path");
+const like = require("../module/like");
 
 const upload_folder = path.join(__dirname, "../uploads");
 
@@ -32,15 +34,17 @@ const upload = multer({
 Router.post("/signup", auth);
 Router.post("/login", login);
 Router.get("/all-user", VerifyToken, allUser);
-Router.get("/all-user", VerifyToken, allUser);
 Router.get("/me", VerifyToken, userDetails);
 Router.post("/update/me", VerifyToken, updateMe);
 Router.post("/add/user-details", VerifyToken, userDetailsForm);
 Router.post("/create/post", VerifyToken, createPost);
-Router.get("/my-post", VerifyToken, myPost);
+Router.get("/my-post", VerifyToken, myPost.CreatePostApiHandler);
+Router.put("/my-post/like", VerifyToken, like);
+Router.put("/my-post/dislike", VerifyToken, disLike);
 Router.get("/global-post", VerifyToken, globalPost);
 Router.post("/change-password", VerifyToken, changePassword);
 Router.post("/check-image", UploadImage);
+
 Router.post("/upload", upload.single("file"), (req, res, next) => {
   if (req.file) {
     return res.json({

@@ -6,5 +6,9 @@ const signUpSchema = mongoose.Schema({
   email: { type: String, required: true },
   password: { type: String, required: true },
   phone: { type: String, required: true },
+  city: { type: String },
+  country: { type: String },
+  profileImage: { type: String },
+  filePath: { type: String },
 });
 module.exports = mongoose.model("signUp", signUpSchema);
