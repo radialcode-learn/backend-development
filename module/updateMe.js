@@ -5,7 +5,7 @@ module.exports = async (req, res) => {
   try {
     const image_url = ImageUrl(req.body.filePath);
     const updateMe = await signUp.findByIdAndUpdate(
-      { _id: req.payload._id },
+      { _id: req.parasm._id },
       {
         $set: {
           firstName: req.body.firstName,

@@ -1,4 +1,3 @@
-const { findOne } = require("../schema/simplePost");
 const createPost = require("../schema/simplePost");
 
 module.exports = async (req, res) => {
