@@ -12,5 +12,5 @@ app.use(cors());
 //Routes
 app.use("/api/v1", routes);
 
-//Port listen in 3000
+//Port listen in 8000
 app.listen(process.env.PORT || 8000);

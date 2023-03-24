@@ -40,7 +40,11 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
 });
-
+Router.get("/", (req, res) => {
+  return res.status(200).json({
+    message: "server started",
+  });
+});
 Router.post("/signup", auth);
 Router.post("/login", login);
 Router.get("/all-user", VerifyToken, allUser);
@@ -73,16 +77,16 @@ Router.post("/upload", upload.single("file"), (req, res, next) => {
 // Router.listen(3000, () => {
 //   console.log("Application started and Listening on port 3000");
 // });
-Router.get("/", (req, res) => {
-  res.send(
-    "<html> <head>server Response</head><body><h1> This page was render direcly from the server <p>Hello there welcome to my website</p></h1></body></html>"
-  );
-});
+// Router.get("/", (req, res) => {
+//   res.send(
+//     "<html> <head>server Response</head><body><h1> This page was render direcly from the server <p>Hello there welcome to my website</p></h1></body></html>"
+//   );
+// });
 
-Router.get("/", (req, res) => {
-  return res.status(200).json({
-    success: true,
-    message: "welcome",
-  });
-});
+// Router.get("/", (req, res) => {
+//   return res.status(200).json({
+//     success: true,
+//     message: "welcome",
+//   });
+// });
 module.exports = Router;
