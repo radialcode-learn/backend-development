@@ -20,14 +20,6 @@ const getComment = require("../module/getComment");
 const searchUser = require("../module/searchUser");
 const upload_folder = path.join(__dirname, "../uploads");
 
-// var http = require("http");
-// var fs = require("fs");
-//   fs.readFile("htmlFile.html", function (err, data) {
-//     res.writeHead(200, { "Content-Type": "text/html" });
-//     res.write(data);
-//     return res.end();
-//   });
-
 const storage = multer.diskStorage({
   destination: (req, res, cb) => {
     cb(null, upload_folder);
