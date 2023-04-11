@@ -34,10 +34,3 @@ module.exports = async (req, res) => {
     });
   }
 };
-
-// TODO
-
-// api Post
-Fields;
-Firstname, lastname, email, password, username;
-api;

@@ -39,7 +39,7 @@ Router.get("/", (req, res) => {
 });
 Router.post("/signup", auth);
 Router.post("/login", login);
-Router.get("/all-user", VerifyToken, allUser);
+Router.get("/all-user", allUser);
 Router.get("/me", VerifyToken, userDetails);
 Router.post("/update/me", VerifyToken, updateMe);
 Router.get("/search/:searchValue", VerifyToken, searchUser);
